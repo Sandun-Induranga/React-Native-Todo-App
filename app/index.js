@@ -1,10 +1,21 @@
-import { View, Text } from "react-native";
+import { Stack, useRouter } from "expo-router";
+import { View, Text, SafeAreaView, Touchable, ScrollView } from "react-native";
+import { Home } from "../components/Home";
 
 const App = () => {
+  const router = useRouter();
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <SafeAreaView>
+      <Stack.Screen
+        options={{
+          headerStyle: { backgroundColor: "blue" },
+          headerTitle: "Todo List",
+        }}
+      />
+      <ScrollView>
+        <Home />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
