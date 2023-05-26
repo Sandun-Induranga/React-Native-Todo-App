@@ -1,4 +1,5 @@
 import { SafeAreaView, Text, StyleSheet, View } from "react-native";
+import List from "../components/List";
 
 const Home = () => {
   return (
@@ -6,7 +7,9 @@ const Home = () => {
       <View style={styles.header}>
         <Text style={styles.title}>YOUR TODO LIST</Text>
       </View>
-      <SafeAreaView style={styles.container}></SafeAreaView>
+      <SafeAreaView style={styles.container}>
+        <List />
+      </SafeAreaView>
     </>
   );
 };
