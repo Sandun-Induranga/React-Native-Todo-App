@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
+import Task from "./Task";
 
 const List = () => {
   const [todos, setTodos] = useState([]);
@@ -36,7 +37,11 @@ const List = () => {
           <Text>Add Todo</Text>
         </TouchableOpacity>
       </View>
-      <FlatList data={todos} renderItem={({ item }) => <Text>{item}</Text>} />
+      <FlatList
+        style={{ width: "100%" }}
+        data={todos}
+        renderItem={({ item }) => <Task task={item}></Task>}
+      />
     </>
   );
 };
