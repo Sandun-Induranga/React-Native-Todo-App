@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FlatList,
   TextInput,
@@ -10,16 +10,26 @@ import {
 
 const List = () => {
   const [todos, setTodos] = useState([]);
+  const [task, setTask] = useState("");
 
-  const addTodo = (todo) => {
-    setTodos([...todos, todo]);
+  useEffect(() => {
+    setTodos(["Task 1", "Task 2", "Task 3"]);
+  }, []);
+
+  const addTodo = () => {
+    setTodos([...todos, task]);
+  };
+
+  const handleInput = (text) => {
+    setTask(text);
   };
   return (
     <>
       <View style={styles.container}>
         <TextInput
           style={styles.input}
-          onSubmitEditing={(e) => addTodo}
+          value={task}
+          onChangeText={(text) => handleInput(text)}
           placeholder="Enter Your Task"
         />
         <TouchableOpacity style={styles.button} onPress={addTodo}>
