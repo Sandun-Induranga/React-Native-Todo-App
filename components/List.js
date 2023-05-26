@@ -19,11 +19,14 @@ const List = () => {
 
   const addTodo = () => {
     setTodos([...todos, task]);
+    alert("Task Added");
+    setTask("");
   };
 
   const handleInput = (text) => {
     setTask(text);
   };
+
   return (
     <>
       <View style={styles.container}>
@@ -34,7 +37,7 @@ const List = () => {
           placeholder="Enter Your Task"
         />
         <TouchableOpacity style={styles.button} onPress={addTodo}>
-          <Text>Add Todo</Text>
+          <Text style={{ color: "white", fontSize: 20 }}>Add Todo</Text>
         </TouchableOpacity>
       </View>
       <FlatList
