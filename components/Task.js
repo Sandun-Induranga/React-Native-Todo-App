@@ -3,28 +3,34 @@ import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import Dialog from "react-native-dialog";
+import { useState } from "react";
 
 const Task = (props) => {
+  const [visible, setVisible] = useState(false);
+
+  const showDialog = () => {
+    setVisible(true);
+  };
+  const handleCancel = () => {
+    setVisible(false);
+  };
+  const handleUpdate = () => {
+    setVisible(false);
+  };
+
   return (
     <LinearGradient style={styles.container} colors={["#758bfd", "#ffd6ff"]}>
       <Text style={styles.text}>{props.task}</Text>
       <View style={{ display: "flex", flexDirection: "row", gap: 5 }}>
-        <Feather name="edit" size={24} color="green" />
+        <Feather name="edit" size={24} color="green" onPress={showDialog} />
         <MaterialIcons name="delete-outline" size={24} color="red" />
       </View>
-      <View style={styles.container}>
-        <Button title="Show dialog" />
-        <Dialog.Container visible>
-          <Dialog.Title>Update TODO</Dialog.Title>
-          <TextInput
-            style={styles.input}
-            placeholder=""
-            value="TODO"
-          ></TextInput>
-          <Dialog.Button label="Cancel" />
-          <Dialog.Button label="UPDATE" />
-        </Dialog.Container>
-      </View>
+      <Dialog.Container visible={visible}>
+        <Dialog.Title>Update TODO</Dialog.Title>
+        <TextInput style={styles.input} placeholder="" value="TODO"></TextInput>
+        <Dialog.Button label="Cancel" onPress={handleCancel} />
+        <Dialog.Button label="UPDATE" onPress={handleUpdate} />
+      </Dialog.Container>
     </LinearGradient>
   );
 };
