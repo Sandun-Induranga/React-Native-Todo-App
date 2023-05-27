@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import Dialog from "react-native-dialog";
 
 const Task = (props) => {
   return (
@@ -11,7 +12,19 @@ const Task = (props) => {
         <Feather name="edit" size={24} color="green" />
         <MaterialIcons name="delete-outline" size={24} color="red" />
       </View>
-      <Alert></Alert>
+      <View style={styles.container}>
+        <Button title="Show dialog" />
+        <Dialog.Container visible>
+          <Dialog.Title>Update TODO</Dialog.Title>
+          <TextInput
+            style={styles.input}
+            placeholder=""
+            value="TODO"
+          ></TextInput>
+          <Dialog.Button label="Cancel" />
+          <Dialog.Button label="UPDATE" />
+        </Dialog.Container>
+      </View>
     </LinearGradient>
   );
 };
@@ -33,6 +46,15 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black",
+    fontSize: 20,
+  },
+  input: {
+    height: 50,
+    borderWidth: 1,
+    padding: 10,
+    width: "100%",
+    borderRadius: 10,
+    borderColor: "#00b4d8",
     fontSize: 20,
   },
 });
